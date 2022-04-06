@@ -1,36 +1,31 @@
-import React from 'react';
-import AppBar from '@mui/material/AppBar';
+import React, {useState, useEffect} from 'react';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Map from 'react-map-gl';
+import {FeatureCollection, MultiPolygon} from 'geojson';
+import {AppHeader} from './components/AppHeader';
+import {MapView} from './components/MapView';
+import {fetchRampsData} from './utils/api';
 
 import './index.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-const APP_BAR_HEIGHT = 64;
+function App() {
+  const [boatRampsData, setBoatRampsData] = useState<FeatureCollection<MultiPolygon>>();
 
-const App = () => {
-  console.log(process.env)
+  useEffect(() => {
+    const getBoatRampsData = async () => {
+      const boatRampsData = await fetchRampsData();
+      if(boatRampsData) {
+        setBoatRampsData(boatRampsData);
+      }
+    }
+    getBoatRampsData()
+  }, []);
+
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            VertexTest
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Map
-        initialViewState={{
-          longitude: -122.4,
-          latitude: 37.8,
-          zoom: 14
-        }}
-        style={{width: '100%', height: window.innerHeight - APP_BAR_HEIGHT}}
-        mapStyle="mapbox://styles/mapbox/streets-v9"
-        mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-      />
+      <AppHeader />
+
+      {!!boatRampsData && <MapView boatRampsData={boatRampsData}/> }
     </Box>
   );
 }
