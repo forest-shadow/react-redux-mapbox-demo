@@ -5,7 +5,6 @@ import {AppHeader} from './components/AppHeader';
 import {MapView} from './components/MapView';
 import {fetchRampsData} from './utils/api';
 
-import './index.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 function App() {
