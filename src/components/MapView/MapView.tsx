@@ -9,6 +9,7 @@ import {
   maxBounds,
 } from './mapView.constants'
 import {BoatRampAreasLayer, BoatRampLocationsLayer} from './Layers';
+import {useWindowSize} from "./useWindowSize";
 
 interface IMapView {
   boatRampsData: FeatureCollection<MultiPolygon>;
@@ -19,11 +20,12 @@ export const MapView = ({boatRampsData}: IMapView) => {
   useEffect(() => {
     setPointSource(getPointsSource(boatRampsData))
   }, [boatRampsData])
+  const windowSize = useWindowSize();
 
   return (
     <Map
       initialViewState={goldenCostInitialViewState}
-      style={{width: '100%', height: window.innerHeight - APP_BAR_HEIGHT}}
+      style={{width: '100%', height: windowSize.height - APP_BAR_HEIGHT}}
       mapStyle={MAPBOX_STYLES}
       mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
       maxBounds={maxBounds}
