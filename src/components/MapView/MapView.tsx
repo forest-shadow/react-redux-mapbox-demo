@@ -13,9 +13,13 @@ import {useWindowSize} from "./useWindowSize";
 
 interface IMapView {
   boatRampsData: FeatureCollection<MultiPolygon>;
+  boatRampsFilter: string | null;
 }
 
-export const MapView = ({boatRampsData}: IMapView) => {
+export const MapView = ({
+  boatRampsData,
+  boatRampsFilter
+}: IMapView) => {
   const [pointsSource, setPointSource] = useState<FeatureCollection<Point>>();
   useEffect(() => {
     setPointSource(getPointsSource(boatRampsData))
@@ -23,19 +27,21 @@ export const MapView = ({boatRampsData}: IMapView) => {
   const windowSize = useWindowSize();
 
   return (
-    <Map
-      initialViewState={goldenCostInitialViewState}
-      style={{width: '100%', height: windowSize.height - APP_BAR_HEIGHT}}
-      mapStyle={MAPBOX_STYLES}
-      mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-      maxBounds={maxBounds}
-    >
-      <BoatRampAreasLayer
-        boatRampsData={boatRampsData}
-      />
-      {!!pointsSource && <BoatRampLocationsLayer
-        pointsSource={pointsSource}
-      /> }
-    </Map>
+      <Map
+        initialViewState={goldenCostInitialViewState}
+        style={{width: '100%', height: windowSize.height - APP_BAR_HEIGHT}}
+        mapStyle={MAPBOX_STYLES}
+        mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+        maxBounds={maxBounds}
+      >
+        <BoatRampAreasLayer
+          boatRampsData={boatRampsData}
+          boatRampsFilter={boatRampsFilter}
+        />
+        {!!pointsSource && <BoatRampLocationsLayer
+            pointsSource={pointsSource}
+            boatRampsFilter={boatRampsFilter}
+        /> }
+      </Map>
   );
 };

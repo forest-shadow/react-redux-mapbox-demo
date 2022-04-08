@@ -2,9 +2,11 @@ import React from 'react';
 import {Layer, LayerProps, Source} from 'react-map-gl';
 import {COLORS} from '../mapView.constants';
 import {FeatureCollection, Point} from 'geojson';
+import {getLayerFilterConfig} from "./mapLayers.utils";
 
 interface IBoatRampLocationsLayer {
   pointsSource: FeatureCollection<Point>;
+  boatRampsFilter: string | null;
 }
 
 export const layerStyles: LayerProps = {
@@ -16,18 +18,18 @@ export const layerStyles: LayerProps = {
     'circle-opacity': 0.6,
     'circle-stroke-color': COLORS.blue,
     'circle-stroke-width': 1,
-    'circle-stroke-opacity': 1
+    'circle-stroke-opacity': 1,
   }
 };
 
-export const BoatRampLocationsLayer = ({pointsSource}: IBoatRampLocationsLayer) => {
+export const BoatRampLocationsLayer = ({pointsSource, boatRampsFilter}: IBoatRampLocationsLayer) => {
   return (
     <Source
       id="boat-ramps-locations"
       type="geojson"
       data={pointsSource}
     >
-      <Layer {...layerStyles} />
+      <Layer {...layerStyles} {...getLayerFilterConfig(boatRampsFilter)} />
     </Source>
   );
 };
