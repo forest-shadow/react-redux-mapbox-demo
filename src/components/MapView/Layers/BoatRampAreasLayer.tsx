@@ -3,10 +3,11 @@ import {Layer, LayerProps, Source} from 'react-map-gl';
 import {FeatureCollection, MultiPolygon} from 'geojson';
 import {COLORS} from "../mapView.constants";
 import {getLayerFilterConfig} from "./mapLayers.utils";
+import {IBoatRampsFilterConfig} from "../../../App";
 
 interface IBoatRampAreasLayer {
   boatRampsData: FeatureCollection<MultiPolygon>;
-  boatRampsFilter: string | null;
+  boatRampsFilter: IBoatRampsFilterConfig | null;
 }
 
 export const layerStyles: LayerProps = {
@@ -28,14 +29,15 @@ export const layer2Styles: LayerProps = {
 }
 
 export const BoatRampAreasLayer = ({boatRampsData, boatRampsFilter}: IBoatRampAreasLayer) => {
+  const filterConfig = getLayerFilterConfig(boatRampsFilter);
   return (
     <Source
       id="boat-ramp-areas"
       type="geojson"
       data={boatRampsData}
     >
-      <Layer {...layerStyles} {...getLayerFilterConfig(boatRampsFilter)} />
-      <Layer {...layer2Styles}  {...getLayerFilterConfig(boatRampsFilter)} />
+      <Layer {...layerStyles} {...filterConfig} />
+      <Layer {...layer2Styles}  {...filterConfig} />
     </Source>
   );
 };

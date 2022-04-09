@@ -4,13 +4,23 @@ import {FeatureCollection, MultiPolygon} from 'geojson';
 import {AppHeader} from './components/AppHeader';
 import {MapView} from './components/MapView';
 import {fetchRampsData} from './utils/api';
+import {BoatRampsByMaterial, BoatRampsBySize} from "./components/BarCharts";
 
 import 'mapbox-gl/dist/mapbox-gl.css';
-import {BoatRamspsBarChart} from "./components/BoatRamspsBarChart";
 
+export enum BOAT_RAMP_FILTER_NAME {
+  MATERIAL = 'material',
+  AREA = 'area_'
+}
+export interface IBoatRampsFilterConfig {
+  value: string;
+  name: BOAT_RAMP_FILTER_NAME;
+  range?: number[]
+}
 function App() {
   const [boatRampsData, setBoatRampsData] = useState<FeatureCollection<MultiPolygon>>();
-  const [boatRampsFilter, setBoatRampsFilter] = useState<string | null>(null);
+
+  const [boatRampsFilter, setBoatRampsFilter] = useState<IBoatRampsFilterConfig | null>(null);
 
   useEffect(() => {
     const getBoatRampsData = async () => {
@@ -27,16 +37,25 @@ function App() {
       <AppHeader />
 
       <Box display="flex">
-        <Box width="70%">
+        <Box width="80%">
           {!!boatRampsData && <MapView boatRampsData={boatRampsData} boatRampsFilter={boatRampsFilter}/> }
         </Box>
         <Box
-          display="flex"
-          justifyContent="center"
-          width="30%"
-          padding="14px 20px"
+          width="20%"
+          padding="6px 20px"
         >
-          {!!boatRampsData && <BoatRamspsBarChart boatRampsData={boatRampsData} setBoatRampsFilter={setBoatRampsFilter} /> }
+          <Box
+            display="flex"
+            justifyContent="center"
+          >
+            {!!boatRampsData && <BoatRampsByMaterial boatRampsData={boatRampsData} setBoatRampsFilter={setBoatRampsFilter} /> }
+          </Box>
+          <Box
+            display="flex"
+            justifyContent="center"
+          >
+            {!!boatRampsData && <BoatRampsBySize boatRampsData={boatRampsData} setBoatRampsFilter={setBoatRampsFilter} /> }
+          </Box>
         </Box>
       </Box>
     </Box>

@@ -10,10 +10,11 @@ import {
 } from './mapView.constants'
 import {BoatRampAreasLayer, BoatRampLocationsLayer} from './Layers';
 import {useWindowSize} from "./useWindowSize";
+import {IBoatRampsFilterConfig} from "../../App";
 
 interface IMapView {
   boatRampsData: FeatureCollection<MultiPolygon>;
-  boatRampsFilter: string | null;
+  boatRampsFilter: IBoatRampsFilterConfig | null;
 }
 
 export const MapView = ({
@@ -38,10 +39,12 @@ export const MapView = ({
           boatRampsData={boatRampsData}
           boatRampsFilter={boatRampsFilter}
         />
-        {!!pointsSource && <BoatRampLocationsLayer
+        {!!pointsSource && (
+          <BoatRampLocationsLayer
             pointsSource={pointsSource}
             boatRampsFilter={boatRampsFilter}
-        /> }
+          />
+        )}
       </Map>
   );
 };

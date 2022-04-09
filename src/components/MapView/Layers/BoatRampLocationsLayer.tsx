@@ -1,12 +1,13 @@
 import React from 'react';
+import {FeatureCollection, Point} from 'geojson';
 import {Layer, LayerProps, Source} from 'react-map-gl';
 import {COLORS} from '../mapView.constants';
-import {FeatureCollection, Point} from 'geojson';
 import {getLayerFilterConfig} from "./mapLayers.utils";
+import {IBoatRampsFilterConfig} from "../../../App";
 
 interface IBoatRampLocationsLayer {
   pointsSource: FeatureCollection<Point>;
-  boatRampsFilter: string | null;
+  boatRampsFilter: IBoatRampsFilterConfig | null;
 }
 
 export const layerStyles: LayerProps = {
@@ -23,13 +24,14 @@ export const layerStyles: LayerProps = {
 };
 
 export const BoatRampLocationsLayer = ({pointsSource, boatRampsFilter}: IBoatRampLocationsLayer) => {
+  const filterConfig = getLayerFilterConfig(boatRampsFilter);
   return (
     <Source
       id="boat-ramps-locations"
       type="geojson"
       data={pointsSource}
     >
-      <Layer {...layerStyles} {...getLayerFilterConfig(boatRampsFilter)} />
+      <Layer {...layerStyles} {...filterConfig} />
     </Source>
   );
 };

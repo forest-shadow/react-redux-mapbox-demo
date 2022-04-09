@@ -5,17 +5,18 @@ import {
   YAxis,
   VerticalGridLines,
   HorizontalGridLines,
-  VerticalBarSeries, Hint
+  VerticalBarSeries, Hint,
 } from 'react-vis';
 import {FeatureCollection, MultiPolygon, Feature} from "geojson";
 import {Box, Button} from "@mui/material";
+import {BOAT_RAMP_FILTER_NAME, IBoatRampsFilterConfig} from "../../App";
 
 interface IBarChart {
   boatRampsData: FeatureCollection<MultiPolygon>;
-  setBoatRampsFilter: Dispatch<string | null>;
+  setBoatRampsFilter: Dispatch<IBoatRampsFilterConfig | null>;
 }
 
-export const BoatRamspsBarChart = ({boatRampsData, setBoatRampsFilter}: IBarChart) => {
+export const BoatRampsByMaterial = ({boatRampsData, setBoatRampsFilter}: IBarChart) => {
   const [currentBarData, setCurrentBarData] = useState<Record<string, string> | null>();
 
   const rampsCounter: {[key: string]: number} = boatRampsData.features.reduce((acc: {[key: string]: number}, feature: Feature<MultiPolygon>) => {
@@ -31,8 +32,8 @@ export const BoatRamspsBarChart = ({boatRampsData, setBoatRampsFilter}: IBarChar
       <Box>
         <Button onClick={() => {setBoatRampsFilter(null)}}>Reset Filters</Button>
       </Box>
-      <XYPlot xType="ordinal" width={350} height={350} stackBy="y"
-        margin={{bottom: 150}}
+      <XYPlot xType="ordinal" width={260} height={260} stackBy="y"
+        margin={{bottom: 100}}
         onMouseLeave={() => setCurrentBarData(null)}
       >
         <VerticalGridLines />
@@ -57,12 +58,12 @@ export const BoatRamspsBarChart = ({boatRampsData, setBoatRampsFilter}: IBarChar
               setCurrentBarData(null)
             }}
             onValueClick={datapoint => {
-              setBoatRampsFilter(datapoint.x as string)
+              setBoatRampsFilter({value: datapoint.x as string, name: BOAT_RAMP_FILTER_NAME.MATERIAL})
             }}
           />
         ))}
         {currentBarData ? <Hint value={currentBarData}>
-          <div style={{background: 'black', color: 'white', padding: '0 6px', opacity: '0.6'}}>
+          <div style={{background: 'black', color: 'white', padding: '0 6px', opacity: '0.8'}}>
             <p>Boat ramps: {currentBarData.y}</p>
             <p>Material: {currentBarData.x}</p>
           </div>
