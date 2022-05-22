@@ -1,12 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import Box from '@mui/material/Box';
-import {FeatureCollection, MultiPolygon} from 'geojson';
+import {useDispatch} from "react-redux";
 import {AppHeader} from './components/AppHeader';
 import {MapView} from './components/MapView';
 import {fetchRampsData} from './utils/api';
 import {BoatRampsByMaterial, BoatRampsBySize} from "./components/BarCharts";
-
-import 'mapbox-gl/dist/mapbox-gl.css';
+import {getBoatRampsDataThunk} from "./store/thunks";
+import {TThunkDispatch} from "./types/Store.types";
+import {IBoatRampsData} from "./types/BoatRamps.types";
 
 export enum BOAT_RAMP_FILTER_NAME {
   MATERIAL = 'material',
@@ -18,7 +19,8 @@ export interface IBoatRampsFilterConfig {
   range?: number[]
 }
 function App() {
-  const [boatRampsData, setBoatRampsData] = useState<FeatureCollection<MultiPolygon>>();
+  const dispatch = useDispatch<TThunkDispatch>();
+  const [boatRampsData, setBoatRampsData] = useState<IBoatRampsData>();
 
   const [boatRampsFilter, setBoatRampsFilter] = useState<IBoatRampsFilterConfig | null>(null);
 
@@ -30,6 +32,7 @@ function App() {
       }
     }
     getBoatRampsData()
+    dispatch(getBoatRampsDataThunk());
   }, []);
 
   return (

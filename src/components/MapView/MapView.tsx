@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {FeatureCollection, Point, MultiPolygon} from "geojson";
+import {FeatureCollection, Point} from "geojson";
 import {Map} from 'react-map-gl';
 import {getPointsSource} from './mapView.utils';
 import {
@@ -11,9 +11,10 @@ import {
 import {BoatRampAreasLayer, BoatRampLocationsLayer} from './Layers';
 import {useWindowSize} from "./useWindowSize";
 import {IBoatRampsFilterConfig} from "../../App";
+import {IBoatRampsData} from "../../types/BoatRamps.types";
 
 interface IMapView {
-  boatRampsData: FeatureCollection<MultiPolygon>;
+  boatRampsData: IBoatRampsData;
   boatRampsFilter: IBoatRampsFilterConfig | null;
 }
 

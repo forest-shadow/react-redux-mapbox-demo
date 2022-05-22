@@ -1,0 +1,1 @@
+export {getBoatRampsDataThunk} from './getBoatRampsDataThunk';

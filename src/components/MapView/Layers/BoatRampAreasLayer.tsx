@@ -1,12 +1,12 @@
 import React from 'react';
 import {Layer, LayerProps, Source} from 'react-map-gl';
-import {FeatureCollection, MultiPolygon} from 'geojson';
 import {COLORS} from "../mapView.constants";
 import {getLayerFilterConfig} from "./mapLayers.utils";
 import {IBoatRampsFilterConfig} from "../../../App";
+import {IBoatRampsData} from "../../../types/BoatRamps.types";
 
 interface IBoatRampAreasLayer {
-  boatRampsData: FeatureCollection<MultiPolygon>;
+  boatRampsData: IBoatRampsData;
   boatRampsFilter: IBoatRampsFilterConfig | null;
 }
 

@@ -7,12 +7,13 @@ import {
   HorizontalGridLines,
   VerticalBarSeries, Hint,
 } from 'react-vis';
-import {FeatureCollection, MultiPolygon, Feature} from "geojson";
+import {MultiPolygon, Feature} from "geojson";
 import {Box, Button} from "@mui/material";
 import {BOAT_RAMP_FILTER_NAME, IBoatRampsFilterConfig} from "../../App";
+import {IBoatRampsData} from "../../types/BoatRamps.types";
 
 interface IBarChart {
-  boatRampsData: FeatureCollection<MultiPolygon>;
+  boatRampsData: IBoatRampsData;
   setBoatRampsFilter: Dispatch<IBoatRampsFilterConfig | null>;
 }
 
