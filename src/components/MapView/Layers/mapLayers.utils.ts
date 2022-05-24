@@ -1,4 +1,4 @@
-import {IBoatRampsFilterConfig} from "../../../App";
+import {IBoatRampsFilterConfig} from "types/BoatRamps.types";
 
 enum BOAT_RAMP_FILTER_NAME {
   MATERIAL = 'material',

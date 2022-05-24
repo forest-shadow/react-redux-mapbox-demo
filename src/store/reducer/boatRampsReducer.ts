@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import {IBoatRampsData} from "../../types/BoatRamps.types";
+import {IBoatRampsData} from "types/BoatRamps.types";
 
 export interface IBoatRampsState {
   raw: null | IBoatRampsData;

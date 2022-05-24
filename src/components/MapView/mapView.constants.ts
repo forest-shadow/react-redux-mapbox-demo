@@ -3,10 +3,6 @@ import {LngLatBoundsLike} from 'react-map-gl';
 export const APP_BAR_HEIGHT = 64;
 export const MAPBOX_STYLES = "mapbox://styles/mapbox/streets-v9";
 
-export const COLORS = {
-  blue: '#0080ff'
-}
-
 export const goldenCostInitialViewState = {
   longitude: 153.43088,
   latitude: -28.00029,

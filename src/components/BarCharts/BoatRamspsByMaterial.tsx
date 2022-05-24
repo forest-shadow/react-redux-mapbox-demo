@@ -9,8 +9,7 @@ import {
 } from 'react-vis';
 import {MultiPolygon, Feature} from "geojson";
 import {Box, Button} from "@mui/material";
-import {BOAT_RAMP_FILTER_NAME, IBoatRampsFilterConfig} from "../../App";
-import {IBoatRampsData} from "../../types/BoatRamps.types";
+import {BOAT_RAMP_FILTER_NAME, IBoatRampsFilterConfig, IBoatRampsData} from "types/BoatRamps.types";
 
 interface IBarChart {
   boatRampsData: IBoatRampsData;

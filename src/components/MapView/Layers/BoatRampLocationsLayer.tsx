@@ -1,9 +1,9 @@
 import React from 'react';
 import {FeatureCollection, Point} from 'geojson';
 import {Layer, LayerProps, Source} from 'react-map-gl';
-import {COLORS} from '../mapView.constants';
 import {getLayerFilterConfig} from "./mapLayers.utils";
-import {IBoatRampsFilterConfig} from "../../../App";
+import COLORS from 'utils/colors';
+import {IBoatRampsFilterConfig} from "types/BoatRamps.types";
 
 interface IBoatRampLocationsLayer {
   pointsSource: FeatureCollection<Point>;

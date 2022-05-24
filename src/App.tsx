@@ -1,23 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import Box from '@mui/material/Box';
 import {useDispatch} from "react-redux";
-import {AppHeader} from './components/AppHeader';
-import {MapView} from './components/MapView';
-import {fetchRampsData} from './utils/api';
-import {BoatRampsByMaterial, BoatRampsBySize} from "./components/BarCharts";
-import {getBoatRampsDataThunk} from "./store/thunks";
-import {TThunkDispatch} from "./types/Store.types";
-import {IBoatRampsData} from "./types/BoatRamps.types";
+import {AppHeader} from 'components/AppHeader';
+import {MapView} from 'components/MapView';
+import {BoatRampsByMaterial, BoatRampsBySize} from "components/BarCharts";
+import {fetchRampsData} from 'utils/api';
+import {getBoatRampsDataThunk} from "store/thunks";
+import {TThunkDispatch} from "types/Store.types";
+import {IBoatRampsData, IBoatRampsFilterConfig} from "types/BoatRamps.types";
 
-export enum BOAT_RAMP_FILTER_NAME {
-  MATERIAL = 'material',
-  AREA = 'area_'
-}
-export interface IBoatRampsFilterConfig {
-  value: string;
-  name: BOAT_RAMP_FILTER_NAME;
-  range?: number[]
-}
 function App() {
   const dispatch = useDispatch<TThunkDispatch>();
   const [boatRampsData, setBoatRampsData] = useState<IBoatRampsData>();

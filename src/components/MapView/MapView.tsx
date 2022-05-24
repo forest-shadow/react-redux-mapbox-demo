@@ -9,9 +9,8 @@ import {
   maxBounds,
 } from './mapView.constants'
 import {BoatRampAreasLayer, BoatRampLocationsLayer} from './Layers';
-import {useWindowSize} from "../../hooks";
-import {IBoatRampsFilterConfig} from "../../App";
-import {IBoatRampsData} from "../../types/BoatRamps.types";
+import {useWindowSize} from "hooks";
+import {IBoatRampsData, IBoatRampsFilterConfig} from "types/BoatRamps.types";
 
 interface IMapView {
   boatRampsData: IBoatRampsData;

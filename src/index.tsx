@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import {CssBaseline} from "@mui/material";
 import {Provider} from 'react-redux';
 import App from './App';
-import store from './store';
+import store from 'store';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 

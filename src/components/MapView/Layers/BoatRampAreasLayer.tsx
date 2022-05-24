@@ -1,9 +1,8 @@
 import React from 'react';
 import {Layer, LayerProps, Source} from 'react-map-gl';
-import {COLORS} from "../mapView.constants";
 import {getLayerFilterConfig} from "./mapLayers.utils";
-import {IBoatRampsFilterConfig} from "../../../App";
-import {IBoatRampsData} from "../../../types/BoatRamps.types";
+import COLORS from "utils/colors";
+import {IBoatRampsData, IBoatRampsFilterConfig} from "types/BoatRamps.types";
 
 interface IBoatRampAreasLayer {
   boatRampsData: IBoatRampsData;
