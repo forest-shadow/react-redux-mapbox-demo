@@ -9,7 +9,7 @@ import {
   maxBounds,
 } from './mapView.constants'
 import {BoatRampAreasLayer, BoatRampLocationsLayer} from './Layers';
-import {useWindowSize} from "./useWindowSize";
+import {useWindowSize} from "../../hooks";
 import {IBoatRampsFilterConfig} from "../../App";
 import {IBoatRampsData} from "../../types/BoatRamps.types";
 

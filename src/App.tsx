@@ -33,7 +33,7 @@ function App() {
     }
     getBoatRampsData()
     dispatch(getBoatRampsDataThunk());
-  }, []);
+  }, [dispatch]);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
