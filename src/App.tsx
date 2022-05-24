@@ -8,12 +8,17 @@ import {fetchRampsData} from 'utils/api';
 import {getBoatRampsDataThunk} from "store/thunks";
 import {TThunkDispatch} from "types/Store.types";
 import {IBoatRampsData, IBoatRampsFilterConfig} from "types/BoatRamps.types";
+import {useWindowSize} from "hooks";
+import {APP_BAR_HEIGHT} from "components/MapView/mapView.constants";
 
 function App() {
   const dispatch = useDispatch<TThunkDispatch>();
   const [boatRampsData, setBoatRampsData] = useState<IBoatRampsData>();
 
   const [boatRampsFilter, setBoatRampsFilter] = useState<IBoatRampsFilterConfig | null>(null);
+
+  const windowSize = useWindowSize();
+  const contentSectionHeight = windowSize.height - APP_BAR_HEIGHT;
 
   useEffect(() => {
     const getBoatRampsData = async () => {
@@ -30,13 +35,23 @@ function App() {
     <Box sx={{ flexGrow: 1 }}>
       <AppHeader />
 
-      <Box display="flex">
+      <Box
+        display="flex"
+        height={contentSectionHeight}
+        overflow="hidden"
+      >
         <Box width="80%">
-          {!!boatRampsData && <MapView boatRampsData={boatRampsData} boatRampsFilter={boatRampsFilter}/> }
+          {!!boatRampsData && (
+            <MapView
+              boatRampsData={boatRampsData}
+              boatRampsFilter={boatRampsFilter}
+              mapHeight={contentSectionHeight}
+            />
+          )}
         </Box>
         <Box
           width="20%"
-          padding="6px 20px"
+          padding="20px"
         >
           <Box
             display="flex"

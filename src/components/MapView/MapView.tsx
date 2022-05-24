@@ -4,33 +4,32 @@ import {Map} from 'react-map-gl';
 import {getPointsSource} from './mapView.utils';
 import {
   goldenCostInitialViewState,
-  APP_BAR_HEIGHT,
   MAPBOX_STYLES,
   maxBounds,
 } from './mapView.constants'
 import {BoatRampAreasLayer, BoatRampLocationsLayer} from './Layers';
-import {useWindowSize} from "hooks";
 import {IBoatRampsData, IBoatRampsFilterConfig} from "types/BoatRamps.types";
 
 interface IMapView {
   boatRampsData: IBoatRampsData;
   boatRampsFilter: IBoatRampsFilterConfig | null;
+  mapHeight: number;
 }
 
 export const MapView = ({
   boatRampsData,
-  boatRampsFilter
+  boatRampsFilter,
+  mapHeight
 }: IMapView) => {
   const [pointsSource, setPointSource] = useState<FeatureCollection<Point>>();
   useEffect(() => {
     setPointSource(getPointsSource(boatRampsData))
   }, [boatRampsData])
-  const windowSize = useWindowSize();
 
   return (
       <Map
         initialViewState={goldenCostInitialViewState}
-        style={{width: '100%', height: windowSize.height - APP_BAR_HEIGHT}}
+        style={{width: '100%', height: mapHeight}}
         mapStyle={MAPBOX_STYLES}
         mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
         maxBounds={maxBounds}

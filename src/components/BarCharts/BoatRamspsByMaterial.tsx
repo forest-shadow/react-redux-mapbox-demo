@@ -8,7 +8,7 @@ import {
   VerticalBarSeries, Hint,
 } from 'react-vis';
 import {MultiPolygon, Feature} from "geojson";
-import {Box, Button} from "@mui/material";
+import {Box, Button, Typography} from "@mui/material";
 import {BOAT_RAMP_FILTER_NAME, IBoatRampsFilterConfig, IBoatRampsData} from "types/BoatRamps.types";
 
 interface IBarChart {
@@ -28,11 +28,22 @@ export const BoatRampsByMaterial = ({boatRampsData, setBoatRampsFilter}: IBarCha
 
   return (
     <div style={{position: 'relative'}}>
-      <h3>Boat ramps by material</h3>
+      <Typography
+        variant="h6"
+        component="h3"
+        fontWeight="bold"
+        style={{ margin:"0 0 10px" }}
+      >
+        Boat ramps by material
+      </Typography>
       <Box>
         <Button onClick={() => {setBoatRampsFilter(null)}}>Reset Filters</Button>
       </Box>
-      <XYPlot xType="ordinal" width={260} height={260} stackBy="y"
+      <XYPlot
+        xType="ordinal"
+        width={260}
+        height={260}
+        stackBy="y"
         margin={{bottom: 100}}
         onMouseLeave={() => setCurrentBarData(null)}
       >
@@ -46,22 +57,25 @@ export const BoatRampsByMaterial = ({boatRampsData, setBoatRampsFilter}: IBarCha
             }
           } />
         <YAxis />
-        {rampMaterialLabels && rampsCounter && rampMaterialLabels.map((rampMaterialLabel) => (
-          <VerticalBarSeries
-            key={rampMaterialLabel as string}
-            data={[{ x: rampMaterialLabel as string, y: rampsCounter[rampMaterialLabel as string]}]}
-            barWidth={1}
-            onValueMouseOver={(datapoint)=>{
-              setCurrentBarData(datapoint)
-            }}
-            onValueMouseOut={()=>{
-              setCurrentBarData(null)
-            }}
-            onValueClick={datapoint => {
-              setBoatRampsFilter({value: datapoint.x as string, name: BOAT_RAMP_FILTER_NAME.MATERIAL})
-            }}
-          />
-        ))}
+        {rampMaterialLabels
+          && rampsCounter
+          && rampMaterialLabels.map((rampMaterialLabel) => (
+            <VerticalBarSeries
+              key={rampMaterialLabel as string}
+              data={[{ x: rampMaterialLabel as string, y: rampsCounter[rampMaterialLabel as string]}]}
+              barWidth={1}
+              onValueMouseOver={(datapoint)=>{
+                setCurrentBarData(datapoint)
+              }}
+              onValueMouseOut={()=>{
+                setCurrentBarData(null)
+              }}
+              onValueClick={datapoint => {
+                setBoatRampsFilter({value: datapoint.x as string, name: BOAT_RAMP_FILTER_NAME.MATERIAL})
+              }}
+            />
+          )
+        )}
         {currentBarData ? <Hint value={currentBarData}>
           <div style={{background: 'black', color: 'white', padding: '0 6px', opacity: '0.8'}}>
             <p>Boat ramps: {currentBarData.y}</p>
