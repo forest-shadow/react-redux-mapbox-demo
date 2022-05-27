@@ -3,6 +3,8 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import AppBar from '@mui/material/AppBar';
 
+export const APP_HEADER_HEIGHT = 65;
+
 export const AppHeader = () => {
   return (
     <AppBar position="static">

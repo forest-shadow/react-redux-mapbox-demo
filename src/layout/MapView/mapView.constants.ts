@@ -1,6 +1,5 @@
 import {LngLatBoundsLike} from 'react-map-gl';
 
-export const APP_BAR_HEIGHT = 65;
 export const MAPBOX_STYLES = "mapbox://styles/mapbox/streets-v9";
 
 export const goldenCostInitialViewState = {
