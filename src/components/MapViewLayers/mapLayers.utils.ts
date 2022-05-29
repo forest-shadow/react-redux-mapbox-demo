@@ -1,9 +1,4 @@
-import {IBoatRampsFilterConfig} from "types/BoatRamps.types";
-
-enum BOAT_RAMP_FILTER_NAME {
-  MATERIAL = 'material',
-  AREA = 'area_'
-}
+import {BOAT_RAMP_FILTER_NAME, IBoatRampsFilterConfig} from "types/BoatRamps.types";
 
 const filterProcessorsMap = {
   [BOAT_RAMP_FILTER_NAME.MATERIAL]: (boatRampsFilterConfig: IBoatRampsFilterConfig) => ({filter: ['==', BOAT_RAMP_FILTER_NAME.MATERIAL, boatRampsFilterConfig.value]}),
