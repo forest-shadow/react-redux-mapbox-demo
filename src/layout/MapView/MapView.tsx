@@ -7,7 +7,7 @@ import {
   MAPBOX_STYLES,
   maxBounds,
 } from './mapView.constants'
-import {BoatRampAreasLayer, BoatRampLocationsLayer} from './Layers';
+import {BoatRampAreasLayer, BoatRampLocationsLayer} from 'components/MapViewLayers';
 import {boatRampsSelector, rampPointsSelector} from "store/selectors";
 import {IBoatRampsFilterConfig} from "types/BoatRamps.types";
 
