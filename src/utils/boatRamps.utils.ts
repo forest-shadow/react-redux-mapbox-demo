@@ -1,8 +1,7 @@
-import {FeatureCollection, Point} from 'geojson';
 import {centroid, multiPolygon} from '@turf/turf';
-import {IBoatRampsData} from "types/BoatRamps.types";
+import {IBoatRampsData, IRampPointsData} from "types/BoatRamps.types";
 
-export const getPointsSource = (source: IBoatRampsData): FeatureCollection<Point> => {
+export const getPointsSource = (source: IBoatRampsData): IRampPointsData => {
   return {
     type: 'FeatureCollection',
     features: source.features.map(({geometry, properties}) => {

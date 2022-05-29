@@ -1,16 +1,14 @@
-import React, {useEffect, useState} from 'react';
-import {FeatureCollection, Point} from "geojson";
+import React from 'react';
 import {Map} from 'react-map-gl';
 import {Box} from "@mui/material";
 import {useSelector} from "react-redux";
-import {getPointsSource} from './mapView.utils';
 import {
   goldenCostInitialViewState,
   MAPBOX_STYLES,
   maxBounds,
 } from './mapView.constants'
 import {BoatRampAreasLayer, BoatRampLocationsLayer} from './Layers';
-import {boatRampsSelector} from "store/selectors";
+import {boatRampsSelector, rampPointsSelector} from "store/selectors";
 import {IBoatRampsFilterConfig} from "types/BoatRamps.types";
 
 interface IMapView {
@@ -23,12 +21,7 @@ export const MapView = ({
   mapHeight
 }: IMapView) => {
   const boatRampsData = useSelector(boatRampsSelector);
-  const [pointsSource, setPointSource] = useState<FeatureCollection<Point>>();
-  useEffect(() => {
-    if (boatRampsData) {
-      setPointSource(getPointsSource(boatRampsData))
-    }
-  }, [boatRampsData])
+  const rampPointsData = useSelector(rampPointsSelector);
 
   return (
     <Box width="80%">
@@ -47,9 +40,9 @@ export const MapView = ({
             />
           )
         }
-        {!!pointsSource && (
+        {!!rampPointsData && (
           <BoatRampLocationsLayer
-            pointsSource={pointsSource}
+            pointsSource={rampPointsData}
             boatRampsFilter={boatRampsFilter}
           />
         )}
