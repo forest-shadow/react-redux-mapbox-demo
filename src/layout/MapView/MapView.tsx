@@ -1,27 +1,25 @@
 import React from 'react';
+import {useSelector} from "react-redux";
 import {Map} from 'react-map-gl';
 import {Box} from "@mui/material";
-import {useSelector} from "react-redux";
 import {
   goldenCostInitialViewState,
   MAPBOX_STYLES,
   maxBounds,
 } from './mapView.constants'
 import {BoatRampAreasLayer, BoatRampLocationsLayer} from 'components/MapViewLayers';
-import {boatRampsSelector, rampPointsSelector} from "store/selectors";
-import {IBoatRampsFilterConfig} from "types/BoatRamps.types";
+import {boatRampsSelector, filterConfigSelector, rampPointsSelector} from "store/selectors";
 
 interface IMapView {
-  boatRampsFilter: IBoatRampsFilterConfig | null;
   mapHeight: number;
 }
 
 export const MapView = ({
-  boatRampsFilter,
   mapHeight
 }: IMapView) => {
   const boatRampsData = useSelector(boatRampsSelector);
   const rampPointsData = useSelector(rampPointsSelector);
+  const boatRampsFilter = useSelector(filterConfigSelector);
 
   return (
     <Box width="80%">

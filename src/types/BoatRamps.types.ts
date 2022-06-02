@@ -10,9 +10,3 @@ export enum BOAT_RAMP_FILTER_NAME {
   MATERIAL = 'material',
   AREA = 'area_'
 }
-
-export interface IBoatRampsFilterConfig {
-  value: string;
-  name: BOAT_RAMP_FILTER_NAME;
-  range?: number[]
-}

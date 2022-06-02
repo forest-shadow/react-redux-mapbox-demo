@@ -8,4 +8,4 @@ export const rampPointsSelector = createSelector(
   (boatRampsData ) => { return boatRampsData ? getPointsSource(boatRampsData) : null; }
 )
 
-export const filterSelector = () => {};
+export const filterConfigSelector = (state: IAppState) => state.filter;

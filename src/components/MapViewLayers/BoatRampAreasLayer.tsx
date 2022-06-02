@@ -2,11 +2,12 @@ import React from 'react';
 import {Layer, LayerProps, Source} from 'react-map-gl';
 import {getLayerFilterConfig} from "./mapLayers.utils";
 import COLORS from "utils/colors";
-import {IBoatRampsData, IBoatRampsFilterConfig} from "types/BoatRamps.types";
+import {IBoatRampsData} from "types/BoatRamps.types";
+import {IFilterState} from "store/reducer/filterReducer";
 
 interface IBoatRampAreasLayer {
   boatRampsData: IBoatRampsData;
-  boatRampsFilter: IBoatRampsFilterConfig | null;
+  boatRampsFilter: IFilterState;
 }
 
 export const layerStyles: LayerProps = {

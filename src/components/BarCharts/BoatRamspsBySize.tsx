@@ -1,4 +1,4 @@
-import React, {Dispatch, useState} from 'react';
+import React, {useState} from 'react';
 import {
   XYPlot,
   XAxis,
@@ -10,11 +10,12 @@ import {
 } from 'react-vis';
 import {MultiPolygon, Feature} from "geojson";
 import {Box, Button, Typography} from "@mui/material";
-import {IBoatRampsData, BOAT_RAMP_FILTER_NAME, IBoatRampsFilterConfig} from "types/BoatRamps.types";
+import {IBoatRampsData, BOAT_RAMP_FILTER_NAME} from "types/BoatRamps.types";
+import {defaultFilterState, IFilterState} from "store/reducer/filterReducer";
 
 interface IBarChart {
   boatRampsData: IBoatRampsData;
-  setBoatRampsFilter: Dispatch<IBoatRampsFilterConfig | null>;
+  setBoatRampsFilter: (value: IFilterState) => void;
 }
 
 enum BOAT_RAMPS_SIZE_CATEGORY {
@@ -68,7 +69,7 @@ export const BoatRampsBySize = ({boatRampsData, setBoatRampsFilter}: IBarChart) 
         Boat ramps by size
       </Typography>
       <Box>
-        <Button onClick={() => {setBoatRampsFilter(null)}}>Reset Filters</Button>
+        <Button onClick={() => {setBoatRampsFilter(defaultFilterState)}}>Reset Filters</Button>
       </Box>
       <XYPlot xType="ordinal" width={260} height={260} stackBy="y"
         margin={{bottom: 100}}
@@ -97,11 +98,13 @@ export const BoatRampsBySize = ({boatRampsData, setBoatRampsFilter}: IBarChart) 
             }}
             onValueClick={datapoint => {
               const currentConfig = boatRampSizesConfigCollection.find(boatRampSizesConfig => boatRampSizesConfig.label === datapoint.x)
-              setBoatRampsFilter({
-                value: datapoint.x as string,
-                name: BOAT_RAMP_FILTER_NAME.AREA,
-                range: currentConfig && currentConfig.range,
-              })
+              if (currentConfig) {
+                setBoatRampsFilter({
+                  value: datapoint.x as string,
+                  name: BOAT_RAMP_FILTER_NAME.AREA,
+                  range: currentConfig.range,
+                })
+              }
             }}
           />
         ))}
