@@ -8,9 +8,9 @@ import {
   VerticalBarSeries, Hint,
 } from 'react-vis';
 import {MultiPolygon, Feature} from "geojson";
-import {Box, Button, Typography} from "@mui/material";
+import {Typography} from "@mui/material";
 import {BOAT_RAMP_FILTER_NAME, IBoatRampsData} from "types/BoatRamps.types";
-import {defaultFilterState, IFilterState} from "store/reducer/filterReducer";
+import {IFilterState} from "store/reducer/filterReducer";
 
 interface IBarChart {
   boatRampsData: IBoatRampsData;
@@ -37,9 +37,6 @@ export const BoatRampsByMaterial = ({boatRampsData, setBoatRampsFilter}: IBarCha
       >
         Boat ramps by material
       </Typography>
-      <Box>
-        <Button onClick={() => {setBoatRampsFilter(defaultFilterState)}}>Reset Filters</Button>
-      </Box>
       <XYPlot
         xType="ordinal"
         width={260}

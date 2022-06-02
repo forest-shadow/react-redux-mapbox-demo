@@ -1,7 +1,6 @@
 import React from 'react';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import AppBar from '@mui/material/AppBar';
+import {Box, Toolbar, Typography, AppBar} from "@mui/material";
+import {ResetFilterButton} from "components/ResetFilterButton";
 
 export const APP_HEADER_HEIGHT = 65;
 
@@ -9,9 +8,12 @@ export const AppHeader = () => {
   return (
     <AppBar position="static">
       <Toolbar>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          VertexTest
-        </Typography>
+        <Box width="100%" display="flex" justifyContent="space-between">
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            VertexTest
+          </Typography>
+          <ResetFilterButton />
+        </Box>
       </Toolbar>
     </AppBar>
   );
