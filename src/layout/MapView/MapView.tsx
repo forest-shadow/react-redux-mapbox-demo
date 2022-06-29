@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useRef, RefObject, useState} from "react";
 import {useSelector} from "react-redux";
-import {Map} from 'react-map-gl';
+import {LngLatBounds, Map, MapRef} from "react-map-gl";
 import {Box} from "@mui/material";
 import {
   goldenCostInitialViewState,
@@ -9,6 +9,7 @@ import {
 } from './mapView.constants'
 import {BoatRampAreasLayer, BoatRampLocationsLayer} from 'components/MapViewLayers';
 import {boatRampsSelector, filterConfigSelector, rampPointsSelector} from "store/selectors";
+import {useVisibleMapData} from "./useVisibleMapData";
 
 interface IMapView {
   mapHeight: number;
@@ -17,30 +18,54 @@ interface IMapView {
 export const MapView = ({
   mapHeight
 }: IMapView) => {
+  const mapRef = useRef() as RefObject<MapRef>;
+
+  const [mapBounds, setMapBounds] = useState<LngLatBounds>();
+
   const boatRampsData = useSelector(boatRampsSelector);
   const rampPointsData = useSelector(rampPointsSelector);
   const boatRampsFilter = useSelector(filterConfigSelector);
 
+  const { visibleBoatRamps, visibleRampPoints} = useVisibleMapData({
+    mapBounds,
+    boatRampsData,
+    rampPointsData
+  });
+
+  const setCurrentMapBoundsHandler = (mapRef: RefObject<MapRef>) => {
+    if (mapRef && mapRef?.current) {
+      setMapBounds(mapRef?.current?.getBounds())
+    }
+  }
+
   return (
     <Box width="80%">
       <Map
+        ref={mapRef}
         initialViewState={goldenCostInitialViewState}
         style={{width: '100%', height: mapHeight}}
         mapStyle={MAPBOX_STYLES}
         mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
         maxBounds={maxBounds}
+        onMoveEnd={() => {
+          setCurrentMapBoundsHandler(mapRef)
+        }}
+        onLoad={() => {
+          setCurrentMapBoundsHandler(mapRef)
+        }}
       >
         {
-          !!boatRampsData && (
+          !!visibleBoatRamps && (
             <BoatRampAreasLayer
-              boatRampsData={boatRampsData}
+              boatRampsData={visibleBoatRamps}
               boatRampsFilter={boatRampsFilter}
             />
           )
         }
-        {!!rampPointsData && (
+
+        {!!visibleRampPoints && (
           <BoatRampLocationsLayer
-            pointsSource={rampPointsData}
+            pointsSource={visibleRampPoints}
             boatRampsFilter={boatRampsFilter}
           />
         )}
