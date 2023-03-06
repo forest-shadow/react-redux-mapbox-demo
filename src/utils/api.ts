@@ -1,4 +1,4 @@
-const BOAT_RAMPS_API_URL = 'https://raw.githubusercontent.com/JRGranell/javascript-challenge/master/data/boat_ramps.geojson'
+const BOAT_RAMPS_API_URL = "https://raw.githubusercontent.com/forest-shadow/mapbox-demo/main/data/boat_ramps.geojson";
 
 export const fetchRampsData = async () => {
   const response = await fetch(BOAT_RAMPS_API_URL);
