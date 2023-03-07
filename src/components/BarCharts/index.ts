@@ -1,2 +1,2 @@
-export {BoatRampsByMaterial} from './BoatRamspsByMaterial';
-export {BoatRampsBySize} from './BoatRamspsBySize';
+export {RampMaterialBarChart} from './RampMaterialBarChart';
+export {RampSizeBarChart} from './RampSizeBarChart';

@@ -1,0 +1,1 @@
+export {RampSizeBarChart} from './RampSizeBarChart';

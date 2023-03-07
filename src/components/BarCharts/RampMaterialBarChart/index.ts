@@ -1,0 +1,1 @@
+export {RampMaterialBarChart} from './RampMaterialBarChart';
