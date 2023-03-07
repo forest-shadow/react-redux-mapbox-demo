@@ -25,7 +25,8 @@
       "hooks": ["./hooks"],
       "types/*": ["./types/*"],
       "store/*": ["./store/*"],
-      "utils/*": ["./utils/*"]
+      "utils/*": ["./utils/*"],
+      "mocks/*": ["./mocks/*"],
     }
   },
   "include": [

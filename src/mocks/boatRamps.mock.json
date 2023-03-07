@@ -1,0 +1,276 @@
+{
+  "type": "FeatureCollection",
+  "totalFeatures": 106,
+  "features": [
+    {
+      "type": "Feature",
+      "id": "af1b8d1c_a186_4e72_8e9e_549a8065e970.1",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                153.29237339772322,
+                -27.897575560605485
+              ],
+              [
+                153.29240999654635,
+                -27.897600934719307
+              ],
+              [
+                153.29243164508424,
+                -27.897612892477547
+              ],
+              [
+                153.29242807749804,
+                -27.89762571619733
+              ],
+              [
+                153.2924182348173,
+                -27.897642434997323
+              ],
+              [
+                153.29240518208437,
+                -27.89764887031301
+              ],
+              [
+                153.29238402481764,
+                -27.897632940370542
+              ],
+              [
+                153.29236010912982,
+                -27.897619001393466
+              ],
+              [
+                153.29233897564296,
+                -27.8976119164061
+              ],
+              [
+                153.29237339772322,
+                -27.897575560605485
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "rec_id": 1598139,
+        "status": "CURRENT",
+        "asset_numb": "BOAR320",
+        "type": "Boat Ramp",
+        "material": "Gravel",
+        "number_lan": 1,
+        "add_improv": "f",
+        "top_rl": 0,
+        "toe_rl": 0,
+        "area_": 36.079,
+        "comments": "Council use only",
+        "documents": "../photos/31/j31p6.jpg",
+        "inspectors": null,
+        "inspection": "2009-09-23Z",
+        "constructi": null,
+        "record_cre": "2007-04-27Z",
+        "last_updat": null,
+        "update_dat": "2011-07-22Z",
+        "disposal_d": null,
+        "positional": "GPS Corrected 1.0M",
+        "level_accu": null,
+        "owner": "251",
+        "project_nu": null,
+        "file_numbe": null,
+        "folder_num": null,
+        "drawing_nu": null,
+        "survey_num": null,
+        "condition": 4,
+        "historic_c": 0,
+        "funding_ba": "Non GCCC",
+        "mi_symbolo": "Pen (2, 2, 65535) Brush (1, 0, 16777215)",
+        "mi_prinx": 1598139,
+        "createuser": null,
+        "createdate": null,
+        "updateuser": null,
+        "updatedate": null,
+        "shape_leng": 25.1301720763,
+        "shape_area": 36.0791723381
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "af1b8d1c_a186_4e72_8e9e_549a8065e970.2",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                153.4099019230464,
+                -27.941836613871285
+              ],
+              [
+                153.40994366983585,
+                -27.941815641162545
+              ],
+              [
+                153.40995127031735,
+                -27.94180866845805
+              ],
+              [
+                153.41008429819288,
+                -27.94174392160656
+              ],
+              [
+                153.41010378945236,
+                -27.94177806958301
+              ],
+              [
+                153.41011231135724,
+                -27.941793026715636
+              ],
+              [
+                153.41013298486263,
+                -27.94182933770449
+              ],
+              [
+                153.40999761017804,
+                -27.941894181863553
+              ],
+              [
+                153.40998288579846,
+                -27.94190162624285
+              ],
+              [
+                153.40997200810037,
+                -27.941906442168914
+              ],
+              [
+                153.40994356088996,
+                -27.94192006502714
+              ],
+              [
+                153.4099019230464,
+                -27.941836613871285
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "rec_id": 1600083,
+        "status": "CURRENT",
+        "asset_numb": "BOAR360",
+        "type": "Boat Ramp",
+        "material": "Concrete",
+        "number_lan": 2,
+        "add_improv": null,
+        "top_rl": 0,
+        "toe_rl": 0,
+        "area_": 218.394,
+        "comments": null,
+        "documents": "../photos/53/j116p77.jpg",
+        "inspectors": null,
+        "inspection": "2009-08-20Z",
+        "constructi": null,
+        "record_cre": "2002-01-10Z",
+        "last_updat": null,
+        "update_dat": "2010-03-16Z",
+        "disposal_d": null,
+        "positional": "GPS Corrected 1.0M",
+        "level_accu": null,
+        "owner": "902",
+        "project_nu": "D934",
+        "file_numbe": null,
+        "folder_num": null,
+        "drawing_nu": null,
+        "survey_num": null,
+        "condition": 2,
+        "historic_c": 0,
+        "funding_ba": "Non GCCC",
+        "mi_symbolo": "Pen (2, 2, 65535) Brush (1, 0, 16777215)",
+        "mi_prinx": 1600083,
+        "createuser": null,
+        "createdate": null,
+        "updateuser": null,
+        "updatedate": null,
+        "shape_leng": 62.6072098532,
+        "shape_area": 218.394586885
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "af1b8d1c_a186_4e72_8e9e_549a8065e970.3",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                153.4248808701714,
+                -27.950485094146234
+              ],
+              [
+                153.42473695713448,
+                -27.950446187694055
+              ],
+              [
+                153.42476959313436,
+                -27.95036765577499
+              ],
+              [
+                153.42490712641677,
+                -27.950404325983815
+              ],
+              [
+                153.4248808701714,
+                -27.950485094146234
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "rec_id": 1601213,
+        "status": "CURRENT",
+        "asset_numb": "BOAR400",
+        "type": "Boat Ramp",
+        "material": "Concrete",
+        "number_lan": 1,
+        "add_improv": null,
+        "top_rl": 0,
+        "toe_rl": 0,
+        "area_": 134.266,
+        "comments": null,
+        "documents": "../photos/53/A126p72.jpg",
+        "inspectors": null,
+        "inspection": "2009-08-11Z",
+        "constructi": null,
+        "record_cre": "2002-02-01Z",
+        "last_updat": null,
+        "update_dat": "2010-03-16Z",
+        "disposal_d": null,
+        "positional": "GPS Corrected 1.0M",
+        "level_accu": null,
+        "owner": "902",
+        "project_nu": "8039",
+        "file_numbe": "WF1/57/46(P1)",
+        "folder_num": null,
+        "drawing_nu": null,
+        "survey_num": null,
+        "condition": 2,
+        "historic_c": 0,
+        "funding_ba": "Non GCCC",
+        "mi_symbolo": "Pen (2, 2, 65535) Brush (1, 0, 16777215)",
+        "mi_prinx": 1601213,
+        "createuser": null,
+        "createdate": null,
+        "updateuser": null,
+        "updatedate": null,
+        "shape_leng": 47.509529903,
+        "shape_area": 134.266239896
+      }
+    }
+  ]
+}
