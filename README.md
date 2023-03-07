@@ -3,7 +3,7 @@
 ---
 Demo mapbox app demonstrating example of usage redux toolkit for handling complex app state.
 
-![React: Redux + Mapbox Demo App](https://github.com/fores-shadow/react-redux-mapbox-demo/blob/main/app-view.jpg?raw=true)
+![React: Redux + Mapbox Demo App](https://github.com/forest-shadow/react-redux-mapbox-demo/blob/main/app-view.jpg?raw=true)
 
 ## Installation instruction
 
