@@ -1,9 +1,14 @@
 import {useState, useEffect} from 'react'
 
+export enum WINDOW_SIZE_DIMENSION {
+  WIDTH = 'width',
+  HEIGHT = 'height'
+}
+type TWindowSizeState = {[key in WINDOW_SIZE_DIMENSION]: number};
 export const useWindowSize = () => {
-  const [windowSize, setWindowSize] = useState<{[key: string]: number}>({
+  const [windowSize, setWindowSize] = useState<TWindowSizeState>({
     width: window.innerWidth,
-    height: window.innerHeight,
+    height: window.innerHeight
   });
   useEffect(() => {
     const handleResize = () =>{
@@ -13,9 +18,8 @@ export const useWindowSize = () => {
       });
     }
     window.addEventListener("resize", handleResize);
-    // Call handler right away so state gets updated with initial window size
     handleResize();
-    // Remove event listener on cleanup
+
     return () => window.removeEventListener("resize", handleResize);
   }, []);
   return windowSize;
