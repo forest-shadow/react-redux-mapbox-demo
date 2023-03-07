@@ -10,7 +10,7 @@ export const AppHeader = () => {
       <Toolbar>
         <Box width="100%" display="flex" justifyContent="space-between">
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            VertexTest
+            React: Redux + Mapbox Demo
           </Typography>
           <ResetFilterButton />
         </Box>
