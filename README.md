@@ -18,10 +18,14 @@ Demo mapbox app demonstrating example of usage redux toolkit for handling comple
 1. Mapbox integration
 2. Two Mapbox layers displaying different aggregated views of provided raw geojson data:
     * location layer
-    * area layer
+    * area layer — displaying exact object's area. Can be examined on close zoom in.
 3. Two bar chart statistic components categorizing incoming data by specific aspect:
    * object's material
    * object's area
 4. Extension on top of stat charts providing interactive object filtering on chart bar click.
 5. Resetting filter state button.
 6. Dynamic objects loading on map resize.
+
+## TODO
+- [ ] Add more tests
+- [ ] Re-implement object's marker to display useful information on hover
