@@ -11,9 +11,7 @@ export const ChartPanel = () => {
   const setBoatRampsFilter = (filterState: IFilterState) => {dispatch(setFilter(filterState))};
   return (
     <Box
-      width="20%"
       padding="20px"
-      minWidth="300px"
     >
       <Box
         display="flex"

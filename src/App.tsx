@@ -1,20 +1,12 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
-import {useDispatch} from "react-redux";
-import {AppHeader, ChartPanel, MapView} from './layout';
-import {getBoatRampsDataThunk} from "store/thunks";
-import {TThunkDispatch} from "types/Store.types";
 import {useWindowSize} from "hooks";
-import {APP_HEADER_HEIGHT} from "layout/AppHeader";
+import {AppHeader, APP_HEADER_HEIGHT, ChartPanel} from './layout';
+import {MapView} from "components/MapView";
 
 function App() {
-  const dispatch = useDispatch<TThunkDispatch>();
   const windowSize = useWindowSize();
   const contentSectionHeight = windowSize.height - APP_HEADER_HEIGHT;
-
-  useEffect(() => {
-    dispatch(getBoatRampsDataThunk());
-  }, [dispatch]);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -23,12 +15,21 @@ function App() {
       <Box
         display="flex"
         height={contentSectionHeight}
-        overflow="hidden"
       >
-        <MapView
-          mapHeight={contentSectionHeight}
-        />
-        <ChartPanel />
+        <Box
+          width="80%"
+        >
+          <MapView
+            mapHeight={contentSectionHeight}
+          />
+        </Box>
+
+        <Box
+          width="20%"
+          minWidth="300px"
+        >
+          <ChartPanel />
+        </Box>
       </Box>
     </Box>
   );

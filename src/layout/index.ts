@@ -1,3 +1,2 @@
-export {AppHeader} from "./AppHeader";
+export {AppHeader, APP_HEADER_HEIGHT} from "./AppHeader";
 export {ChartPanel} from "./ChartPanel";
-export {MapView} from "./MapView"
