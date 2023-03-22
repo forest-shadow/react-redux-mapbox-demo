@@ -1,8 +1,8 @@
 import React, {useRef, RefObject, useState, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {LngLatBounds, Map, MapRef} from "react-map-gl";
+import {LngLatBounds, LngLatLike, Map, MapRef} from "react-map-gl";
+import {centroid, multiPolygon} from "@turf/turf";
 import {BoatRampAreasLayer, BoatRampLocationsLayer} from 'components/MapViewLayers';
-import {useVisibleMapData} from "./useVisibleMapData";
 import {getBoatRampsDataThunk} from "store/thunks";
 import {boatRampsSelector, filterConfigSelector, rampPointsSelector} from "store/selectors";
 import {
@@ -11,7 +11,7 @@ import {
   maxBounds,
 } from './mapView.constants'
 import {TThunkDispatch} from "types/Store.types";
-
+import {IBoatRampsData, IRampPointsData} from "types/BoatRamps.types";
 
 interface IMapView {
   mapHeight: number;
@@ -33,11 +33,14 @@ export const MapView = ({
   const rampPointsData = useSelector(rampPointsSelector);
   const boatRampsFilter = useSelector(filterConfigSelector);
 
-  const { visibleBoatRamps, visibleRampPoints} = useVisibleMapData({
-    mapBounds,
-    boatRampsData,
-    rampPointsData
-  });
+  const visibleBoatRamps = {
+    ...boatRampsData,
+    features: boatRampsData?.features.filter(feature => mapBounds?.contains(centroid(multiPolygon(feature.geometry.coordinates)).geometry.coordinates as LngLatLike))
+  };
+  const visibleRampPoints = {
+    ...rampPointsData,
+    features: rampPointsData?.features.filter(feature => mapBounds?.contains(feature.geometry.coordinates as LngLatLike))
+  };
 
   const setCurrentMapBoundsHandler = (mapRef: RefObject<MapRef>) => {
     if (mapRef && mapRef?.current) {
@@ -63,7 +66,7 @@ export const MapView = ({
       {
         !!visibleBoatRamps && (
           <BoatRampAreasLayer
-            boatRampsData={visibleBoatRamps}
+            boatRampsData={visibleBoatRamps as IBoatRampsData}
             boatRampsFilter={boatRampsFilter}
           />
         )
@@ -71,7 +74,7 @@ export const MapView = ({
 
       {!!visibleRampPoints && (
         <BoatRampLocationsLayer
-          pointsSource={visibleRampPoints}
+          pointsSource={visibleRampPoints as IRampPointsData}
           boatRampsFilter={boatRampsFilter}
         />
       )}
