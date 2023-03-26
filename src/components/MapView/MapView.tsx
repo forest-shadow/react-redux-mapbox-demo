@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {LngLatBounds, LngLatLike, Map, MapRef} from "react-map-gl";
 import {centroid, multiPolygon} from "@turf/turf";
 import {BoatRampAreasLayer, BoatRampLocationsLayer} from 'components/MapViewLayers';
-import {getBoatRampsDataThunk} from "store/thunks";
+import {getBoatRampsData} from "store/thunks";
 import {boatRampsSelector, filterConfigSelector, rampPointsSelector} from "store/selectors";
 import {
   goldenCostInitialViewState,
@@ -24,7 +24,7 @@ export const MapView = ({
   const mapRef = useRef() as RefObject<MapRef>;
 
   useEffect(() => {
-    dispatch(getBoatRampsDataThunk());
+    dispatch(getBoatRampsData());
   }, [dispatch]);
 
   const [mapBounds, setMapBounds] = useState<LngLatBounds>();
