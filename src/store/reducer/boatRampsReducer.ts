@@ -1,5 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import {IBoatRampsData} from "types/BoatRamps.types";
+import {getBoatRampsData} from "store/thunks";
 
 export interface IBoatRampsState {
   raw: null | IBoatRampsData;
@@ -7,15 +8,16 @@ export interface IBoatRampsState {
 
 const initialState: IBoatRampsState = { raw: null };
 
-const boatRampsSlice = createSlice({
-  name: 'boatRamps',
+export const boatRampsSliceName = 'boatRamps';
+const boatRampsSlice = createSlice<IBoatRampsState, {}>({
+  name: boatRampsSliceName,
   initialState,
-  reducers: {
-    setRawBoatRampsData(state: IBoatRampsState, action: PayloadAction<IBoatRampsData>) {
-      state.raw = action.payload;
-    },
-  },
+  reducers: {},
+  extraReducers: builder => {
+    builder.addCase(getBoatRampsData.fulfilled, (state: IBoatRampsState, { payload }) => {
+      state.raw = payload
+    })
+  }
 })
 
-export const { setRawBoatRampsData } = boatRampsSlice.actions;
 export default boatRampsSlice.reducer;

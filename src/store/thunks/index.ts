@@ -1,1 +1,1 @@
-export {getBoatRampsDataThunk} from './getBoatRampsDataThunk';
+export {getBoatRampsData} from './getBoatRampsData';
