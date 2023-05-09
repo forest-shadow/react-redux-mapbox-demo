@@ -1,5 +1,5 @@
 import {BoatRampBarChart} from "components/BarCharts/BoatRampBarChart";
-import {useRampMaterialBarChart} from "components/BarCharts/RampMaterialBarChart/useRampMaterialBarChart";
+import {getMaterialChartData} from "components/BarCharts/RampMaterialBarChart/rampMaterialBarChart.utils";
 import {BOAT_RAMP_FILTER_NAME, IBoatRampsData} from "types/BoatRamps.types";
 import {IFilterState} from "store/reducer/filterReducer";
 
@@ -14,7 +14,7 @@ export const RampMaterialBarChart = ({
   const {
     rampMaterialCounter,
     rampMaterialLabels
-  }= useRampMaterialBarChart(boatRampsData);
+  }= getMaterialChartData(boatRampsData);
 
   return (
     <BoatRampBarChart
