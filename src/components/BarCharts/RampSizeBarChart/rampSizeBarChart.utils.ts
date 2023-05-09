@@ -5,7 +5,7 @@ import {
   boatRampSizesConfigCollection
 } from "./rampSizeBarChart.constants";
 
-export const useRampSizeBarChart = (boatRampsData: IBoatRampsData) => {
+export const getSizeChartData = (boatRampsData: IBoatRampsData) => {
   const rampSizeCounter: {[key: string]: number} = boatRampsData.features.reduce((acc: {[key: string]: number}, feature: Feature<MultiPolygon>) => {
     const currentCategorySizeConfig = boatRampSizesConfigCollection.find(({range}) => feature.properties?.area_ >= range[0] && feature.properties?.area_ <=range[1])
 
