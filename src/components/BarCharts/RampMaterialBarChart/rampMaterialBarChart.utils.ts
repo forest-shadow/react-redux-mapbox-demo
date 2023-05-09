@@ -1,7 +1,7 @@
 import {Feature, MultiPolygon} from "geojson";
 import {IBoatRampsData} from "types/BoatRamps.types";
 
-export const useRampMaterialBarChart = (boatRampsData: IBoatRampsData) => {
+export const getMaterialChartData = (boatRampsData: IBoatRampsData) => {
   const rampMaterialCounter: {[key: string]: number} = boatRampsData.features.reduce((acc: {[key: string]: number}, feature: Feature<MultiPolygon>) => {
     if(acc[feature.properties?.material]) acc[feature.properties?.material]++;
     else acc[feature.properties?.material] = 1;
