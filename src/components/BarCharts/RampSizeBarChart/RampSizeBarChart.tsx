@@ -1,5 +1,5 @@
 import {BoatRampBarChart} from "components/BarCharts/BoatRampBarChart";
-import {useRampSizeBarChart} from "components/BarCharts/RampSizeBarChart/useRampSizeBarChart";
+import {getSizeChartData} from "components/BarCharts/RampSizeBarChart/rampSizeBarChart.utils";
 import {IFilterState} from "store/reducer/filterReducer";
 import {boatRampSizesConfigCollection} from "components/BarCharts/RampSizeBarChart/rampSizeBarChart.constants";
 import {BOAT_RAMP_FILTER_NAME, IBoatRampsData} from "types/BoatRamps.types";
@@ -15,7 +15,7 @@ export const RampSizeBarChart = ({
   const {
     rampSizeCounter,
     rampSizeLabels
-  } = useRampSizeBarChart(boatRampsData);
+  } = getSizeChartData(boatRampsData);
 
   return (
     <BoatRampBarChart
