@@ -10,6 +10,7 @@ import {
   MAPBOX_STYLES,
   maxBounds,
 } from './mapView.constants'
+import config from 'config';
 import {TThunkDispatch} from "types/Store.types";
 import {IBoatRampsData, IRampPointsData} from "types/BoatRamps.types";
 
@@ -54,7 +55,7 @@ export const MapView = ({
       initialViewState={goldenCostInitialViewState}
       style={{width: '100%', height: mapHeight}}
       mapStyle={MAPBOX_STYLES}
-      mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+      mapboxAccessToken={config.mapboxToken}
       maxBounds={maxBounds}
       onMoveEnd={() => {
         setCurrentMapBoundsHandler(mapRef)
