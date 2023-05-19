@@ -1,7 +1,8 @@
 import {configureStore} from '@reduxjs/toolkit';
 import reducer from './reducer';
-import {IFilterState} from "./reducer/filterReducer";
-import {IBoatRampsState} from "./reducer/boatRampsReducer";
+import {IFilterState} from './reducer/filterReducer';
+import {IBoatRampsState} from './reducer/boatRampsReducer';
+import config from 'config';
 
 export interface IAppState {
   filter: IFilterState;
@@ -9,7 +10,7 @@ export interface IAppState {
 }
 const store = configureStore<IAppState>({
   reducer,
-  devTools: process.env.NODE_ENV !== 'production',
+  devTools: config.isDevEnvironment,
 });
 
 export default store;

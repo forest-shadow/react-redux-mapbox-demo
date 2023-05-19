@@ -24,6 +24,7 @@
       "components/*": ["./components/*"],
       "hooks": ["./hooks"],
       "types/*": ["./types/*"],
+      "config": ["./config.ts"],
       "store/*": ["./store/*"],
       "utils/*": ["./utils/*"],
       "mocks/*": ["./mocks/*"],
