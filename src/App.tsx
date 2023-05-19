@@ -1,29 +1,27 @@
 import React from 'react';
 import Box from '@mui/material/Box';
-import {useWindowSize} from "hooks";
 import {AppHeader, APP_HEADER_HEIGHT, ChartPanel} from "layout";
 import {MapView, ResetFilterButton} from "components";
 
 function App() {
-  const windowSize = useWindowSize();
-  const contentSectionHeight = windowSize.height - APP_HEADER_HEIGHT;
-
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box
+      display="flex"
+      flexDirection="column"
+      minHeight="100vh"
+    >
       <AppHeader title="React: Redux + Mapbox Demo">
         <ResetFilterButton />
       </AppHeader>
 
       <Box
         display="flex"
-        height={contentSectionHeight}
+        flexGrow="1"
       >
         <Box
           width="80%"
         >
-          <MapView
-            mapHeight={contentSectionHeight}
-          />
+          <MapView />
         </Box>
 
         <Box
