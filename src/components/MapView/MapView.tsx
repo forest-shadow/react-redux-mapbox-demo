@@ -14,13 +14,7 @@ import config from 'config';
 import {TThunkDispatch} from "types/Store.types";
 import {IBoatRampsData, IRampPointsData} from "types/BoatRamps.types";
 
-interface IMapView {
-  mapHeight: number;
-}
-
-export const MapView = ({
-  mapHeight
-}: IMapView) => {
+export const MapView = () => {
   const dispatch = useDispatch<TThunkDispatch>();
   const mapRef = useRef() as RefObject<MapRef>;
 
@@ -53,7 +47,6 @@ export const MapView = ({
     <Map
       ref={mapRef}
       initialViewState={goldenCostInitialViewState}
-      style={{width: '100%', height: mapHeight}}
       mapStyle={MAPBOX_STYLES}
       mapboxAccessToken={config.mapboxToken}
       maxBounds={maxBounds}
