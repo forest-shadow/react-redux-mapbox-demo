@@ -11,7 +11,7 @@ Demo mapbox app demonstrating example of usage redux toolkit for handling comple
 2. Clone the repo
 3. Navigate to the project's root
 4. Run `yarn` to install all dependencies
-5. Add the `.env` file with your mapbox token
+5. Add the `.env.local` file with your mapbox token
 6. `yarn start`
 
 ## Implemented features
